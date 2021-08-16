@@ -29,9 +29,6 @@ export class TodayComponent implements OnInit {
 
   ngOnInit(): void {
     this.generateGeolocation();
-    this.nightMode.subscribe(value => {
-      console.log(value)
-    })
   }
 
   private generateGeolocation() {

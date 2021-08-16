@@ -16,8 +16,13 @@ const routes: Routes = [
     loadChildren: () => import('./pages/forecast/forecast.module').then(m => m.ForecastModule)
   },
   {
-    path: '**',
+    path: 'error',
     loadChildren: () => import('./pages/error/error.module').then(m => m.ErrorModule)
+  },
+  {
+    path: '**',
+    redirectTo: '/error',
+    pathMatch: 'full'
   }
 ];
 

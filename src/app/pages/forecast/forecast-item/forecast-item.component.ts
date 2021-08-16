@@ -17,7 +17,6 @@ export class ForecastItemComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log(this.nightMode)
     this.weatherImage = environment.LINK + 'img/wn/' + this.forecast['weather'][0]['icon'] + '@2x.png'
   }
 
