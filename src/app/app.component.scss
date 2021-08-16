@@ -1,5 +1,9 @@
 @import "src/assets/styles/media-rules";
 
+.night-mode {
+  background: #131C24 !important;
+}
+
 .app {
   &-content {
     min-height: 100vh;

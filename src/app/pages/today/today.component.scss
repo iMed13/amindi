@@ -1,5 +1,18 @@
 @import "src/assets/styles/media-rules";
 
+.night-mode {
+  .weather {
+    &-card {
+      background: #1B242E !important;
+      color: #fff !important;
+    }
+
+    .current-hour {
+      background: #766B23;
+    }
+  }
+}
+
 .today-weather {
   width: 100vw;
 }
@@ -58,7 +71,7 @@
       }
 
       &_location {
-        font-size: 25px;
+        font-size: 20px;
       }
 
       &_information {
@@ -77,12 +90,12 @@
         &-date {
 
           p {
-            font-size: 25px;
+            font-size: 20px;
           }
 
           div {
             padding: 15px 0;
-            font-size: 15px;
+            font-size: 13px;
           }
         }
 

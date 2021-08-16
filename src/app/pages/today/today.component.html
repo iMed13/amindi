@@ -1,4 +1,7 @@
-<div class="today-weather">
+<div
+  [class.night-mode]="nightMode | async"
+  class="today-weather"
+>
   <div class="container">
     <div class=" weather-card" *ngIf="weather">
       <div class="current-hour" *ngIf="currentDate">

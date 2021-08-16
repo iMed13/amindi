@@ -1,7 +1,12 @@
 import {Component, OnInit} from '@angular/core';
-import {environment} from "../../../environments/environment";
 import {ForecastService} from "../../services/forecast/forecast.service";
 import {SharedService} from "../../services/shared/shared.service";
+import {Store} from "@ngrx/store";
+import {Observable} from "rxjs";
+
+interface AppState {
+  readonly nightMode: any;
+}
 
 @Component({
   selector: 'app-forecast',
@@ -10,12 +15,16 @@ import {SharedService} from "../../services/shared/shared.service";
 })
 export class ForecastComponent implements OnInit {
   forecastMap = new Map();
+  nightMode: Observable<boolean>;
   activatedForecast: any;
   currentDate: string = '';
+
   constructor(
+    private store: Store<AppState>,
     private sharedService: SharedService,
     private forecastService: ForecastService
   ) {
+    this.nightMode = store.select('nightMode');
   }
 
   ngOnInit(): void {

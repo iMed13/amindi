@@ -4,6 +4,14 @@
   width: 100vw;
 }
 
+.night-mode {
+  .forecast {
+    &-card {
+      background: #1B242E;
+    }
+  }
+}
+
 .forecast {
   &-card {
     background: #DEE2E6;

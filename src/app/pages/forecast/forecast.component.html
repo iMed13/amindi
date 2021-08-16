@@ -1,4 +1,7 @@
-<div class="forecast-weather">
+<div
+  class="forecast-weather"
+  [class.night-mode]="nightMode | async"
+>
   <div class="container">
     <div class="forecast-card">
       <div class="forecast-card-header">
@@ -10,6 +13,7 @@
       <div class="forecast-card-body" *ngIf="forecastMap.size!==0">
         <ng-container *ngFor="let forecast of activatedForecast['list']">
           <app-forecast-item
+            [nightMode]="nightMode | async"
             [forecast]="forecast"
             [currentDate]="forecast['generatedDate']"
           ></app-forecast-item>

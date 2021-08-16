@@ -1,4 +1,7 @@
-<div class="app-content">
+<div
+  class="app-content"
+  [class.night-mode]="nightMode | async"
+>
   <app-header></app-header>
   <div class="app-content-router_outlet">
     <router-outlet></router-outlet>

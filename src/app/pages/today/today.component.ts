@@ -2,6 +2,12 @@ import {Component, OnInit} from '@angular/core';
 import {TodayService} from "../../services/today/today.service";
 import {environment} from "../../../environments/environment";
 import {SharedService} from "../../services/shared/shared.service";
+import {Store} from "@ngrx/store";
+import {Observable} from "rxjs";
+
+interface AppState {
+  readonly nightMode: any;
+}
 
 @Component({
   selector: 'app-today',
@@ -10,16 +16,22 @@ import {SharedService} from "../../services/shared/shared.service";
 })
 export class TodayComponent implements OnInit {
   weather: any;
+  nightMode: Observable<boolean>;
   currentDate: any = {};
   weatherImage: String = '';
 
   constructor(
+    private store: Store<AppState>,
     private sharedService: SharedService,
     private todayService: TodayService) {
+    this.nightMode = store.select('nightMode');
   }
 
   ngOnInit(): void {
-    this.generateGeolocation()
+    this.generateGeolocation();
+    this.nightMode.subscribe(value => {
+      console.log(value)
+    })
   }
 
   private generateGeolocation() {

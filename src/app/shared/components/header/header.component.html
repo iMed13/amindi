@@ -1,4 +1,7 @@
-<header class="header">
+<header
+  class="header"
+  [class.night-mode]="nightMode | async"
+>
   <div class="container">
     <nav class="header-nav">
       <ul class="header-nav-ul">

@@ -6,6 +6,8 @@ import {AppComponent} from './app.component';
 import {NgbAlertModule, NgbModule, NgbPaginationModule} from '@ng-bootstrap/ng-bootstrap';
 import {HttpClientModule} from "@angular/common/http";
 import {SharedModule} from "./shared/shared.module";
+import {StoreModule} from '@ngrx/store';
+import {nightModeReducer} from "./shared/store/reducers/night-mode.reducers";
 
 @NgModule({
   declarations: [
@@ -18,7 +20,8 @@ import {SharedModule} from "./shared/shared.module";
     NgbAlertModule,
     AppRoutingModule,
     SharedModule,
-    NgbModule
+    NgbModule,
+    StoreModule.forRoot({nightMode: nightModeReducer}, {})
   ],
   bootstrap: [AppComponent]
 })
