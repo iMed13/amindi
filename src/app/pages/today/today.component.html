@@ -1,0 +1,45 @@
+<div class="today-weather">
+  <div class="container">
+    <div class=" weather-card" *ngIf="weather">
+      <div class="current-hour" *ngIf="currentDate">
+        <span>
+          {{currentDate.hour | hour}} : {{currentDate.minutes | hour}} {{currentDate.ampm | uppercase}}
+        </span>
+      </div>
+      <div class="weather-card-weather_icon">
+        <img
+          [src]="weatherImage"
+          [alt]="weather['weather'][0]['description'] | titlecase"
+          [title]="weather['weather'][0]['description'] | titlecase"
+        >
+      </div>
+      <div class="weather-card-weather_location">
+        {{weather.name | titlecase}}, {{weather.sys.country | uppercase}}
+      </div>
+      <div class="weather-card-weather_information">
+        {{weather.main.temp}}°C | {{weather.weather[0].main| titlecase}}
+      </div>
+      <div class="weather-card-weather_additional_information" *ngIf="currentDate">
+        <div class="weather-card-weather_additional_information-date">
+          <p>{{currentDate.day | titlecase}}</p>
+          <div>{{currentDate.date}} {{currentDate.month | titlecase}} {{currentDate.year}}</div>
+        </div>
+        <div class="weather-card-weather_additional_information-others">
+          <div class="information-item" title="Cloudiness">
+            <i class="fas fa-smog"></i>
+            <span>{{weather.clouds.all }}  %</span>
+          </div>
+          <div class="information-item" title="Humidity">
+            <i class="fas fa-tint"></i>
+            <span>{{weather.main.humidity }}  %</span>
+          </div>
+
+          <div class="information-item" title="Wind Speed">
+            <i class="fas fa-wind"></i>
+            <span>{{weather.wind.speed}}  m/s</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,20 @@
+<div class="forecast-item">
+  <div class="forecast-item-icon">
+    <img
+      [src]="weatherImage"
+      [alt]="forecast['weather'][0]['description'] | titlecase"
+      [title]="forecast['weather'][0]['description'] | titlecase"
+    >
+  </div>
+  <div class="forecast-item-information">
+    <div class="left-side-information">
+      <ng-container *ngIf="currentDate">
+        <span>{{ (currentDate.hour - 1) | hour}} : {{currentDate.minutes | hour}} </span>
+        <span>{{forecast.weather[0].main | titlecase}}   </span>
+      </ng-container>
+    </div>
+    <div class="right-side-information">
+      <span>{{forecast.main.temp}}°C </span>
+    </div>
+  </div>
+</div>

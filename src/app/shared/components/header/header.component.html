@@ -1,0 +1,20 @@
+<header class="header">
+  <div class="container">
+    <nav class="header-nav">
+      <ul class="header-nav-ul">
+        <li class="header-nav-ul-li nav-item">
+          <a [routerLink]="['today']" [routerLinkActive]="'active'">
+            <i class="fas fa-cog"></i>
+            <span>Today</span>
+          </a>
+        </li>
+        <li class="header-nav-ul-li nav-item">
+          <a [routerLink]="['forecast']" [routerLinkActive]="'active'">
+            <i class="far fa-calendar"></i>
+            <span>Forecast</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</header>
