@@ -25,6 +25,8 @@
     max-height: 450px;
     display: flex;
     flex-direction: column;
+    animation-name: slide-right;
+    animation-duration: 0.5s;
 
     &-body {
       height: 100%;
@@ -91,5 +93,13 @@
         }
       }
     }
+  }
+}
+@keyframes slide-right{
+  0% {
+    transform: translateX(-50px)
+  }
+  100% {
+    transform: translateX(0px)
   }
 }

@@ -9,11 +9,11 @@
     min-height: 100vh;
     overflow: hidden;
     display: flex;
-    flex-direction: column;
+    //flex-direction: column;
     background: #F4F4F4;
-    @include mobile {
-      flex-direction: column-reverse;
-    }
+    //@include mobile {
+    flex-direction: column-reverse;
+    //}
 
     &-router_outlet {
       flex: 1;

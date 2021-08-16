@@ -10,6 +10,8 @@
     padding: 15px 30px;
     display: flex;
     align-items: center;
+    animation-name: slide-left;
+    animation-duration: 0.8s;
     @include mobile {
       padding: 15px;
     }
@@ -56,5 +58,13 @@
         align-content: space-between;
       }
     }
+  }
+}
+@keyframes slide-left{
+  0% {
+    transform: translateX(100px)
+  }
+  100% {
+    transform: translateX(0px)
   }
 }
