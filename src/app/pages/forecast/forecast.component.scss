@@ -26,8 +26,8 @@
 }
 
 :host ::ng-deep {
-  .mat-tab-body-content {
-    max-height: 450px;
+  .mat-tab-group {
+    max-height: 400px;
   }
 
   .mat-tab-label {
@@ -48,8 +48,6 @@
     margin: 0 auto;
     max-width: 500px;
     width: 100%;
-    min-height: 450px;
-    max-height: 450px;
     display: flex;
     flex-direction: column;
     animation-name: slide-right;
@@ -58,7 +56,8 @@
     &-body {
       height: 100%;
       flex: 1;
-      overflow-Y: auto;
+      min-height: 400px;
+      max-height: 400px;
     }
 
     &-header {
