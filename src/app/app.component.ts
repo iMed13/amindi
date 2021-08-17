@@ -24,10 +24,10 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     const date = new Date();
-    if (date.getDate() > 8 && date.getDate() < 20) {
-      this.store.dispatch(switchNightMode({mode: true}));
-    } else {
+    if (date.getHours() > 8 && date.getHours() < 20) {
       this.store.dispatch(switchNightMode({mode: false}));
+    } else {
+      this.store.dispatch(switchNightMode({mode: true}));
     }
   }
 }
