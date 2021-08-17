@@ -33,8 +33,9 @@ export class ForecastComponent implements OnInit {
   }
 
   selectWeather(response: any) {
-    this.activatedForecast = response.value;
-    this.activatedForecast['selectedId'] = response.key;
+    console.log(response)
+    this.activatedForecast = [...this.forecastMap.entries()][response['index']][1];
+    this.activatedForecast['selectedId'] = [...this.forecastMap.entries()][response['index']][0];
   }
 
   private generateGeolocation() {

@@ -10,6 +10,33 @@
       background: #1B242E;
     }
   }
+
+  :host ::ng-deep {
+
+    .mat-tab-header-pagination-chevron {
+      border-color: #fff !important;
+    }
+
+    .mat-tab-label {
+      color: #fff !important
+    }
+  }
+
+
+}
+
+:host ::ng-deep {
+  .mat-tab-body-content {
+    max-height: 450px;
+  }
+
+  .mat-tab-label {
+    min-width: min-content;
+    flex-grow: 1;
+    @include mobile {
+      min-width: auto;
+    }
+  }
 }
 
 .forecast {
@@ -21,7 +48,7 @@
     margin: 0 auto;
     max-width: 500px;
     width: 100%;
-    min-height: 400px;
+    min-height: 450px;
     max-height: 450px;
     display: flex;
     flex-direction: column;
@@ -95,7 +122,8 @@
     }
   }
 }
-@keyframes slide-right{
+
+@keyframes slide-right {
   0% {
     transform: translateX(-50px)
   }

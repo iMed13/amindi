@@ -5,8 +5,9 @@ import {LimitPipe} from "./pipes/limit/limit.pipe";
 import {HeaderComponent} from "./components/header/header.component";
 import {FooterComponent} from "./components/footer/footer.component";
 import {ErrorComponent} from "../pages/error/error.component";
-import { HourPipe } from './pipes/hour/hour.pipe';
-
+import {HourPipe} from './pipes/hour/hour.pipe';
+import {MatSliderModule} from "@angular/material/slider";
+import {MatTabsModule} from "@angular/material/tabs";
 
 @NgModule({
   declarations: [
@@ -18,13 +19,17 @@ import { HourPipe } from './pipes/hour/hour.pipe';
   ],
   imports: [
     CommonModule,
-    SharedRoutingModule
+    SharedRoutingModule,
+    MatSliderModule,
+    MatTabsModule
   ],
   exports: [
     HeaderComponent,
     FooterComponent,
     ErrorComponent,
     LimitPipe,
+    MatTabsModule,
+    MatSliderModule,
     HourPipe
   ]
 })

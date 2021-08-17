@@ -11,30 +11,19 @@
         <div class="forecast-card-header-arrows"></div>
       </div>
       <div class="forecast-card-body" *ngIf="forecastMap.size!==0">
-        <ng-container *ngFor="let forecast of activatedForecast['list']">
-          <app-forecast-item
-            [nightMode]="nightMode | async"
-            [forecast]="forecast"
-            [currentDate]="forecast['generatedDate']"
-          ></app-forecast-item>
-        </ng-container>
-      </div>
-      <div class="forecast-card-navigation">
-        <ng-container *ngFor="let item of forecastMap | keyvalue">
-          <div
-            class="forecast-card-navigation-item"
-            [title]="item.value['date']['day']"
-            [class.active]="activatedForecast['selectedId']===item.key"
-            (click)="selectWeather(item)"
-          >
-            <ng-container *ngIf="currentDate===item.key; else defaultName;">
-              <span>Today</span>
-            </ng-container>
-            <ng-template #defaultName>
-              <span>{{item.value['date']['day'] | limit:3}}</span>
-            </ng-template>
-          </div>
-        </ng-container>
+        <mat-tab-group (selectedTabChange)="selectWeather($event)" focusTab="5">
+          <ng-container *ngFor="let item of forecastMap | keyvalue">
+            <mat-tab [label]=" currentDate===item.key ? 'Today' : item.value['date']['day'] | limit:3">
+              <ng-container *ngFor="let forecast of activatedForecast['list']">
+                <app-forecast-item
+                  [nightMode]="nightMode | async"
+                  [forecast]="forecast"
+                  [currentDate]="forecast['generatedDate']"
+                ></app-forecast-item>
+              </ng-container>
+            </mat-tab>
+          </ng-container>
+        </mat-tab-group>
       </div>
     </div>
   </div>

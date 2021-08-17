@@ -8,6 +8,7 @@ import {HttpClientModule} from "@angular/common/http";
 import {SharedModule} from "./shared/shared.module";
 import {StoreModule} from '@ngrx/store';
 import {nightModeReducer} from "./shared/store/reducers/night-mode.reducers";
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import {nightModeReducer} from "./shared/store/reducers/night-mode.reducers";
     AppRoutingModule,
     SharedModule,
     NgbModule,
-    StoreModule.forRoot({nightMode: nightModeReducer}, {})
+    StoreModule.forRoot({nightMode: nightModeReducer}, {}),
+    BrowserAnimationsModule
   ],
   bootstrap: [AppComponent]
 })

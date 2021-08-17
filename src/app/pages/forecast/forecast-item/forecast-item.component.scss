@@ -10,8 +10,6 @@
     padding: 15px 30px;
     display: flex;
     align-items: center;
-    animation-name: slide-left;
-    animation-duration: 0.8s;
     @include mobile {
       padding: 15px;
     }
