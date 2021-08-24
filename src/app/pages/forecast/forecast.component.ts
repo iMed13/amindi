@@ -1,8 +1,9 @@
-import {Component, OnInit} from '@angular/core';
+import {AfterViewInit, Component, Inject, OnInit, PLATFORM_ID, ViewChild} from '@angular/core';
 import {ForecastService} from "../../services/forecast/forecast.service";
 import {SharedService} from "../../services/shared/shared.service";
 import {Store} from "@ngrx/store";
 import {Observable} from "rxjs";
+import {isPlatformBrowser} from "@angular/common";
 
 interface AppState {
   readonly nightMode: any;
@@ -13,23 +14,32 @@ interface AppState {
   templateUrl: './forecast.component.html',
   styleUrls: ['./forecast.component.scss']
 })
-export class ForecastComponent implements OnInit {
+export class ForecastComponent implements OnInit, AfterViewInit {
   forecastMap = new Map();
   nightMode: Observable<boolean>;
   activatedForecast: any;
   currentDate: string = '';
+  isBrowser: boolean;
+  @ViewChild('containerRefff') containerRefff: any;
 
   constructor(
+    @Inject(PLATFORM_ID) platformId: Object,
     private store: Store<AppState>,
     private sharedService: SharedService,
     private forecastService: ForecastService
   ) {
+    this.isBrowser = isPlatformBrowser(platformId);
     this.nightMode = store.select('nightMode');
   }
 
   ngOnInit(): void {
     this.defineCurrentDate();
     this.generateGeolocation();
+  }
+
+  ngAfterViewInit() {
+
+    console.log(this.containerRefff.nativeElement)
   }
 
   selectWeather(response: any) {
@@ -39,13 +49,16 @@ export class ForecastComponent implements OnInit {
   }
 
   private generateGeolocation() {
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(position => {
-        this.subscribeGetCurrentWeather(position.coords.latitude, position.coords.longitude)
-      });
-    } else {
-      console.log("User not allow")
+    if (this.isBrowser) {
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(position => {
+          this.subscribeGetCurrentWeather(position.coords.latitude, position.coords.longitude)
+        });
+      } else {
+        console.log("User not allow")
+      }
     }
+
   }
 
   private subscribeGetCurrentWeather(latitude: any, longitude: any) {

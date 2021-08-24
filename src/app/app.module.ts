@@ -9,13 +9,14 @@ import {SharedModule} from "./shared/shared.module";
 import {StoreModule} from '@ngrx/store';
 import {nightModeReducer} from "./shared/store/reducers/night-mode.reducers";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {ForecastService} from "./services/forecast/forecast.service";
 
 @NgModule({
   declarations: [
     AppComponent
   ],
   imports: [
-    BrowserModule,
+    BrowserModule.withServerTransition({ appId: 'serverApp' }),
     HttpClientModule,
     NgbPaginationModule,
     NgbAlertModule,
@@ -25,6 +26,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     StoreModule.forRoot({nightMode: nightModeReducer}, {}),
     BrowserAnimationsModule
   ],
+  providers: [ForecastService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

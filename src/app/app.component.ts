@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {Store} from "@ngrx/store";
 import {switchNightMode} from "./shared/store/actions/night-mode.actions";
 import {Observable} from "rxjs";
+import {SeoService} from "./services/seo/seo.service";
 
 interface AppState {
   readonly nightMode: any;
@@ -17,6 +18,7 @@ export class AppComponent implements OnInit {
   nightMode: Observable<boolean>;
 
   constructor(
+    private seoService: SeoService,
     private store: Store<AppState>
   ) {
     this.nightMode = store.select('nightMode');
@@ -29,5 +31,6 @@ export class AppComponent implements OnInit {
     } else {
       this.store.dispatch(switchNightMode({mode: true}));
     }
+    this.seoService.addSEO();
   }
 }

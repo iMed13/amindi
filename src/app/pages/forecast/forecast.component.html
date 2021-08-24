@@ -2,7 +2,7 @@
   class="forecast-weather"
   [class.night-mode]="nightMode | async"
 >
-  <div class="container">
+  <div class="container" #containerRefff>
     <div class="forecast-card">
       <div class="forecast-card-header">
         <div class="forecast-card-header-title" *ngIf="activatedForecast">
@@ -10,7 +10,10 @@
         </div>
         <div class="forecast-card-header-arrows"></div>
       </div>
-      <div class="forecast-card-body" *ngIf="forecastMap.size!==0">
+      <div
+        class="forecast-card-body"
+        [class.hidden]="forecastMap.size==0"
+      >
         <mat-tab-group (selectedTabChange)="selectWeather($event)" focusTab="5">
           <ng-container *ngFor="let item of forecastMap | keyvalue">
             <mat-tab [label]=" currentDate===item.key ? 'Today' : item.value['date']['day'] | limit:3">

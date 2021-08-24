@@ -4,9 +4,7 @@ import {catchError} from "rxjs/operators";
 import {throwError} from "rxjs";
 import {HttpClient} from "@angular/common/http";
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class ForecastService {
 
   constructor(private http: HttpClient) {
