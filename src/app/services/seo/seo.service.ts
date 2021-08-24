@@ -54,7 +54,6 @@ export class SeoService {
       {name: 'url', content: 'https://www.google.ge/'},
       {name: 'type', content: 'website'},
       {name: 'description', content: 'Description here'},
-
       {name: 'title', content: 'Weather APP - 01'},
     ])
   }
